@@ -22,7 +22,7 @@ AFRAME.registerComponent('csg-meshs', {
         if (o.geometry) {
             let geometry = o.geometrySimple || o.geometryOriginal || o.geometry;
             if (geometry instanceof THREE.BufferGeometry) {
-                geometry = o.geometrySimple = geometry.toBufferGeometry();
+                geometry = o.geometrySimple = geometry.clone();
             }
             let changed = !(o.bsp && o.bsp.matrixWorld.equals(o.matrixWorld));
             if (changed) {
